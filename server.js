@@ -1,18 +1,16 @@
 const express = require("express");
+const app = express();
 const cors = require("cors");
-
+app.use(cors());
 const weatherController = require("./controller/weather.controller");
-const moviesController = require("./controller/movies.controller");
 const indexController = require("./controller/index.controller");
+const moviesController = require("./controller/movies.controller");
 
 // find() will be useful for json file
-const app = express();
 
 // if we don't have cors or didn't install it , we will face errors in cosole when we are requsting data to the front end.
-app.use(cors());
 
 const PORT = process.env.PORT;
-const { response } = require("express");
 
 app.get("/", indexController);
 
@@ -33,7 +31,7 @@ app.get("/movies", moviesController);
 // acculomator , reduce way?
 // KICK START OUR APP
 app.listen(PORT, () => {
-  console.log(`srever started on ${PORT}`);
+  console.log(`Srever started on ${PORT}`);
 });
 
 // port keeps the application runs all the time
