@@ -3,11 +3,10 @@ class Movies {
     this.title = moviesData.title;
     this.overview = moviesData.overview;
     this.average_votes = moviesData.average_votes;
-    this.total_votes = moviesData.total_votes;
-    this.image_url = `https://image.tmdb.org/t/p/w500${moviesData.poster_path}`;
-
+    this.vote_average = moviesData.vote_average;
+    this.poster_path = `https://image.tmdb.org/t/p/w500${moviesData.poster_path}`;
     this.popularity = moviesData.popularity;
-    this.released_on = moviesData.released_on;
+    this.release_date = moviesData.release_date;
   }
 }
 
