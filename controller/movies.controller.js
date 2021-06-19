@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
 
-const movies = require("../models/movies.model");
+const Movies = require("../models/movies.model");
 
 const moviesController = (req, res) => {
   const searchQuery = req.query.searchQuery;
@@ -17,7 +17,7 @@ const moviesController = (req, res) => {
     axios
       .get(moviesUrl)
       .then((response) => {
-        const reponseData = response.data.results.map((obj) => new movies(obj));
+        const reponseData = response.data.results.map((obj) => new Movies(obj));
         res.json(reponseData);
       })
       .catch((error) => {
