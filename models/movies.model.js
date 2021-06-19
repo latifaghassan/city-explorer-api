@@ -3,7 +3,6 @@ class Movies {
     this.title = moviesData.title;
     this.overview = moviesData.overview;
     this.average_votes = moviesData.average_votes;
-    this.vote_average = moviesData.vote_average;
     this.poster_path = `https://image.tmdb.org/t/p/w500${moviesData.poster_path}`;
     this.popularity = moviesData.popularity;
     this.release_date = moviesData.release_date;

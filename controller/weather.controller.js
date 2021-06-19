@@ -1,12 +1,8 @@
 const axios = require("axios");
-
 // const weatherData = require("./assests/weather.json");
-
 require("dotenv").config();
-
 const WEATHER_BIT_KEY = process.env.WEATHER_BIT_KEY;
-
-const weather = require("../models/weather.model");
+const Weather = require("../models/weather.model");
 
 const weatherController = (req, res) => {
   const lat = req.query.lat;
@@ -20,7 +16,7 @@ const weatherController = (req, res) => {
     axios
       .get(weatherBitUrl)
       .then((response) => {
-        const reponseData = response.data.data.map((obj) => new weather(obj)); // the first (data) from axios , the second (data) from weatherBit
+        const reponseData = response.data.data.map((obj) => new Weather(obj)); // the first (data) from axios , the second (data) from weatherBit
         res.json(reponseData);
       })
       .catch((error) => {
