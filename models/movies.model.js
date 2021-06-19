@@ -1,13 +1,12 @@
 class Movies {
-  constructor(moviesData) {
-    this.title = moviesData.title;
-    this.overview = moviesData.overview;
-    this.average_votes = moviesData.average_votes;
-    this.total_votes = moviesData.total_votes;
-    this.image_url = `https://image.tmdb.org/t/p/w500${moviesData.poster_path}`;
-
-    this.popularity = moviesData.popularity;
-    this.released_on = moviesData.released_on;
+  constructor(movieObj) {
+    (this.title = movieObj.title),
+      (this.overview = movieObj.overview),
+      (this.vote_average = movieObj.vote_average),
+      (this.vote_count = movieObj.vote_count);
+    this.img = `https://image.tmdb.org/t/p/w500${movieObj.poster_path}`;
+    this.popularity = movieObj.popularity;
+    this.release_date = movieObj.release_date;
   }
 }
 

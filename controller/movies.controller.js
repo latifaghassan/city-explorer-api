@@ -1,26 +1,23 @@
-const Movies = require("../models/movies.model");
-
 const axios = require("axios");
+const Movies = require("../models/movies.model");
 require("dotenv").config();
 
-//----------------------------------------------------------
+const movieController = (req, res) => {
+  const key = process.env.MOVIE_API_KEY;
+  let cityName = req.query.searchQuery;
 
-const moviesController = (req, res) => {
-  const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
-  let searchQuery = req.query.searchQuery;
-  let moviesUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${MOVIE_API_KEY}&region=${searchQuery}`;
-
+  let url = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&region=${cityName}`;
   axios
-    .get(moviesUrl)
+    .get(url)
     .then((response) => {
-      const reponseData = response.data.results.map((obj) => new Movies(obj));
-
-      response.data;
-      res.send(reponseData);
+      let result = response.data.results.map((movieObj) => {
+        return new Movies(movieObj);
+      });
+      res.send(result);
     })
     .catch((error) => {
       res.send(error.message);
     });
 };
 
-module.exports = moviesController;
+module.exports = movieController;
